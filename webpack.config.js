@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const HtmlWebpackPluing = require('html-webpack-plugin')
 module.exports = {
   output: {
@@ -27,15 +26,3 @@ module.exports = {
     ]
   }
 }
-=======
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = {
-    output: {
-        filename: 'app.bundle.js'
-    },
-    plugins: [
-        new HtmlWebpackPlugin()
-    ]
-}
->>>>>>> 66e898cd83c8274975b668305e24a9c3bb089c4b
