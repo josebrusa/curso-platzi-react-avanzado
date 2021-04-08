@@ -1,11 +1,12 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { bounceDown } from '../../styles/animation'
 
 export const List = styled.ul`
 display: flex;
 overflow: scroll;
 width: 100%;
-&.fixed {
+${props => props.fixed && css`
+{
     ${bounceDown()};
     background: #fff;
     border-radius: 60px;
@@ -19,8 +20,8 @@ width: 100%;
     top: -20px;
     transform: scale(.5);
     z-index: 1;
-}
-&::-webkit-scrollbar{
+    }
+`}&::-webkit-scrollbar {
     display: none;
 }
 `
