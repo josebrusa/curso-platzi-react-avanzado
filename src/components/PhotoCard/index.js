@@ -12,17 +12,24 @@ export const PhotoCard = ({
 
   useEffect(function () {
     // console.log(element.current)
-    const observer = new window.IntersectionObserver(function (entries) {
-      // console.log(entries)
-      const { isIntersecting } = entries[0]
-      console.log({ isIntersecting })
-      if (isIntersecting) {
-        // console.log('si')
-        setShow(true)
-        observer.disconnect()
-      }
+    Promise.resolve(
+      typeof window.IntersectionObserver !==
+        'undefined'
+        ? window.IntersectionObserver
+        : import('intersection-observer')
+    ).then(() => {
+      const observer = new window.IntersectionObserver(function (entries) {
+        // console.log(entries)
+        const { isIntersecting } = entries[0]
+        // console.log({ isIntersecting })
+        if (isIntersecting) {
+          // console.log('si')
+          setShow(true)
+          observer.disconnect()
+        }
+      })
+      observer.observe(element.current)
     })
-    observer.observe(element.current)
   }, [element])
   return (
     <Article ref={element}>
@@ -37,7 +44,7 @@ export const PhotoCard = ({
           <Button>
             <MdFavoriteBorder size='32px' />{likes}likes!
           </Button>
-                </>
+        </>
         }
     </Article>
   )
