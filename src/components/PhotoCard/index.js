@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Article, ImgWrapper, Image, Button } from './styles'
-import { MdFavoriteBorder } from 'react-icons/md'
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1520561805070-83c413349512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 
@@ -10,6 +10,18 @@ export const PhotoCard = ({
   const element = useRef(null)
   const [show, setShow] = useState(false)
 
+  const key = `like-${id}`
+
+  const [liked, setLiked] = useState(() => {
+    try {
+      const like = window.localStorage.getItem(key)
+      return like
+    } catch (e) {
+      return false
+    }
+  })
+
+  console.log(liked)
   useEffect(function () {
     // console.log(element.current)
     Promise.resolve(
@@ -31,20 +43,32 @@ export const PhotoCard = ({
       observer.observe(element.current)
     })
   }, [element])
+
+  const Icon = liked ? MdFavorite : MdFavoriteBorder
+  const setLocalStorage = value => {
+    try {
+      window.localStorage.setItem(key, value)
+      setLiked(value)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return (
     <Article ref={element}>
       {
-        show && <>
-          <a href={`/detail/${id}`}>
-            <ImgWrapper>
-              <Image src={src} />
-            </ImgWrapper>
-          </a>
+        show &&
+          <>
+            <a href={`/detail/${id}`}>
+              <ImgWrapper>
+                <Image src={src} />
+              </ImgWrapper>
+            </a>
 
-          <Button>
-            <MdFavoriteBorder size='32px' />{likes}likes!
-          </Button>
-        </>
+            <Button onClick={() => setLocalStorage(!liked)}>
+              <Icon size='32px' />{likes}likes!
+            </Button>
+          </>
         }
     </Article>
   )
