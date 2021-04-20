@@ -8,7 +8,7 @@ function useCategoriesData () {
 
   useEffect(function () {
     setLoading(true)
-    window.fetch('https://petgram-server-jose-platzi-josebrusa.vercel.app/categories')
+    window.fetch('https://petsgram-server-jb-josebrusa.vercel.app/categories')
       .then(res => res.json())
       .then(response => {
         setCategories(response)
