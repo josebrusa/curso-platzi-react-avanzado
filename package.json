@@ -1,7 +1,7 @@
 {
-  "name": "curso-platzi-react-avanzado",
+  "name": "petsgram-jb",
   "version": "1.0.0",
-  "description": "**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev",
+  "description": "**¡contenido de React y Javascript!**",
   "main": "index.js",
   "dependencies": {
     "apollo-boost": "^0.4.9",

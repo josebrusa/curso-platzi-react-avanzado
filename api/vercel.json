@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "petsgram-server-jb",
-  "alias": ["petgram-api-jb"],
+  "name": "petsgram-server",
+  "alias": ["petsgram-API-server"],
   "builds": [{ "src": "index.js", "use": "@vercel/node" }],
   "routes": [{
     "headers": {
