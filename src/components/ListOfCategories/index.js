@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Category } from '../Category'
 import { List, Item } from './styles'
 
@@ -8,7 +8,7 @@ function useCategoriesData () {
 
   useEffect(function () {
     setLoading(true)
-    window.fetch('https://petsgram-server-jb-josebrusa.vercel.app/categories')
+    window.fetch('https://petsgram-api-server.vercel.app/categories')
       .then(res => res.json())
       .then(response => {
         setCategories(response)
