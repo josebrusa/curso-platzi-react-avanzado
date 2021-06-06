@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "petgram",
+    "name": "petsgram",
     "builds": [
         { "use": "@vercel/static-build",
         "src": "package.json" }

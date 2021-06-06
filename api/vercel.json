@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "petgram-server-jbPlatzi",
-  "alias": ["petgram-api-jbPlatzi"],
+  "name": "petsgram-server-jb",
+  "alias": ["petgram-api-jb"],
   "builds": [{ "src": "index.js", "use": "@vercel/node" }],
   "routes": [{
     "headers": {
